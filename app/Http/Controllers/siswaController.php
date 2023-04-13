@@ -65,9 +65,9 @@ class siswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Siswa $siswa)
     {
-        //
+        return view('master.datasiswa.edit_siswa', compact('siswa'));
     }
 
     /**
@@ -79,7 +79,17 @@ class siswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'namalengkap' => 'required',
+            'NISN' => 'required',
+            'jurusan' => 'required',
+        ]);
+        $siswa = Siswa::findOrFail($id);
+        $siswa->update($request->all());
+        $siswa->save();
+
+        return redirect()->route('datasiswa.index')
+            ->with('success', 'Student updated successfully');
     }
 
     /**

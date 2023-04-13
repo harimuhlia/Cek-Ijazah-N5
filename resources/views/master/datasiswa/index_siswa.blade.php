@@ -61,7 +61,7 @@
                     <td>{{ $item->no_ijazah }}</td>
                     <td>
                       <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> Detail</a>
-                      <a href="#" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                      <a href="{{ route('datasiswa.edit',$item->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                       <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</a>
                     </td>
                   </tr>

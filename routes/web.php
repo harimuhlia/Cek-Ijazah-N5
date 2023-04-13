@@ -20,6 +20,6 @@ Route::get('/', function () {
     return view('search_data');
 });
 
-Route::resource('searchdata', SearchdataController::class);
-Route::resource('datasiswa', siswaController::class);
-Route::resource('dataijazah', IjazahController::class);
+Route::resource('/searchdata', SearchdataController::class);
+Route::resource('/datasiswa', siswaController::class,);
+Route::resource('/dataijazah', IjazahController::class);
