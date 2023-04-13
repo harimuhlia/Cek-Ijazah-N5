@@ -25,50 +25,64 @@
     <div class="card-header">
     <h3 class="card-title">Formulir Tambah Data Siswa</h3>
     </div>
-    <form>
+
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+  @endif
+  <form action="{{ route('datasiswa.store')}}" enctype="multipart/form-data" method="POST">
+    @csrf
+  <form>
     <div class="card-body">
       <div class="form-group">
         <label for="namalengkap">Nama Lengkap</label>
-        <input type="text" class="form-control" id="namalengkap" placeholder="Masukan Nama Lengkap">
+        <input type="text" class="form-control" name="namalengkap" placeholder="Masukan Nama Lengkap">
         </div>
         <div class="form-group">
         <label for="NISN">NISN</label>
-        <input type="text" class="form-control" id="NISN" placeholder="Silakan Masukan NISN">
+        <input type="text" class="form-control" name="NISN" placeholder="Silakan Masukan NISN">
         </div>
         <div class="form-group">
           <label for="jurusan">Jurusan</label>
-          <input type="text" class="form-control" id="jurusan" placeholder="Masukan Jurusan">
+          <input type="text" class="form-control" name="jurusan" placeholder="Masukan Jurusan">
           </div>
         <div class="form-group">
           <label for="tempatlahir">Tempat Lahir</label>
-          <input type="text" class="form-control" id="tempatlahir" placeholder="Masukan Tempat Lahir">
+          <input type="text" class="form-control" name="tempatlahir" placeholder="Masukan Tempat Lahir">
           </div>
           <div class="form-group">
             <label for="tanggal_lahir">Tanggal Lahir</label>
-            <input type="date" class="form-control" id="tanggal_lahir" placeholder="Pilih Tanggal">
+            <input type="date" class="form-control" name="tanggal_lahir" placeholder="Pilih Tanggal">
             </div>
     <div class="form-group">
     <label for="wali">Nama Wali</label>
-    <input type="text" class="form-control" id="wali" placeholder="Masukan Nama Wali">
+    <input type="text" class="form-control" name="wali" placeholder="Masukan Nama Wali">
     </div>
     <div class="form-group">
     <label for="thn_masuk">Tahun Masuk</label>
-    <input type="date" class="form-control" id="thn_masuk" placeholder="Masukan Tahun Masuk">
+    <input type="date" class="form-control" name="thn_masuk" placeholder="Masukan Tahun Masuk">
     </div>
     <div class="form-group">
       <label for="thn_lulus">Tahun Lulus</label>
-      <input type="date" class="form-control" id="thn_lulus" placeholder="Masukan Tahun Lulus">
+      <input type="date" class="form-control" name="thn_lulus" placeholder="Masukan Tahun Lulus">
       </div>
     <div class="form-group">
       <label for="no_ijazah">Nomor Ijazah</label>
-      <input type="text" class="form-control" id="no_ijazah" placeholder="Masukan Nomor Ijazah">
+      <input type="text" class="form-control" name="no_ijazah" placeholder="Masukan Nomor Ijazah">
       </div>
       <div class="form-group">
         <label for="asalsekolah">Asal Sekolah</label>
-        <input type="text" class="form-control" id="asalsekolah" placeholder="Masukan Asal Sekolah">
+        <input type="text" class="form-control" name="asalsekolah" placeholder="Masukan Asal Sekolah">
         </div>
     <div class="card-footer">
     <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-success" href="{{ route('datasiswa.index')}}">Kembali</a>
     </div>
     </form>
               <!-- /.card -->

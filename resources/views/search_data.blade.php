@@ -76,7 +76,7 @@
           </div>
   
           @isset($search)
-          @if (empty($searchsiswa))
+          @if (empty($search))
               <h1>Data yang anda masukan tidak valid</h1>
           @else
           <div class="card">

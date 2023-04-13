@@ -36,7 +36,16 @@ class siswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'namalengkap' => 'required',
+            'NISN' => 'required',
+            'jurusan' => 'required',
+        ]);
+
+        Siswa::create($request->all());
+
+        return redirect()->route('datasiswa.index')
+            ->with('success', 'Student created successfully.');
     }
 
     /**
