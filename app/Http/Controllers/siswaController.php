@@ -77,16 +77,43 @@ class siswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Siswa $siswa)
     {
-        $request->validate([
+        $this->validate($request, [
             'namalengkap' => 'required',
             'NISN' => 'required',
             'jurusan' => 'required',
         ]);
-        $siswa = Siswa::findOrFail($id);
-        $siswa->update($request->all());
-        $siswa->save();
+        $siswa->update([
+            'namalengkap'     => $request->namalengkap,
+            'NISN'     => $request->NISN,
+            'jurusan'   => $request->jurusan,
+            'tempatlahir'     => $request->tempatlahir,
+            'tanggal_lahir'     => $request->tanggal_lahir,
+            'wali'   => $request->wali,
+            'thn_masuk'     => $request->thn_masuk,
+            'thn_lulus'     => $request->thn_lulus,
+            'no_ijazah'   => $request->no_ijazah,
+            'asalsekolah'     => $request->asalsekolah,
+        ]);
+
+        // $request->validate([
+        //     'namalengkap' => 'required',
+        //     'NISN' => 'required',
+        //     'jurusan' => 'required',
+        // ]);
+        // $siswa = Siswa::find($siswa);
+        // $siswa->namalengkap = $request->get('namalengkap');
+        // $siswa->NISN = $request->get('NISN');
+        // $siswa->jurusan = $request->get('jurusan');
+        // $siswa->tempatlahir = $request->get('tempatlahir');
+        // $siswa->tanggal_lahir = $request->get('tanggal_lahir');
+        // $siswa->wali = $request->get('wali');
+        // $siswa->thn_masuk = $request->get('thn_masuk');
+        // $siswa->thn_lulus = $request->get('thn_lulus');
+        // $siswa->no_ijazah = $request->get('no_ijazah');
+        // $siswa->asalsekolah = $request->get('asalsekolah');
+        // $siswa->update();
 
         return redirect()->route('datasiswa.index')
             ->with('success', 'Student updated successfully');

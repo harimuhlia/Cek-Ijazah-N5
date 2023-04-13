@@ -36,14 +36,13 @@
         </ul>
     </div>
   @endif
-  <form method="POST" enctype="multipart/form-data" action="{{ route('datasiswa.update', $siswa->id )}}">
-    @method('PUT')
+  <form action="{{ route('datasiswa.update', ['id' => $siswa->id])  }}" method="POST" enctype="multipart/form-data">
     @csrf
-  <form>
+    @method('PUT')
     <div class="card-body">
       <div class="form-group">
         <label for="namalengkap">Nama Lengkap</label>
-        <input type="text" class="form-control" name="namalengkap" value="{{ old('namalengkap',$siswa->namalengkap) }}">
+        <input type="text" class="form-control @error('title') is-invalid @enderror" name="namalengkap" value="{{ old('namalengkap', $siswa->namalengkap) }}" placeholder="Masukkan Judul Post">
         </div>
         <div class="form-group">
         <label for="NISN">NISN</label>
@@ -85,7 +84,6 @@
     <button type="submit" class="btn btn-primary">Submit</button>
     <a class="btn btn-success" href="{{ route('datasiswa.index')}}">Kembali</a>
     </div>
-    </form>
     </form>
               <!-- /.card -->
             </div>
