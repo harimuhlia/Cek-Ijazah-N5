@@ -67,7 +67,9 @@ class DatasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $datasiswa = Siswa::find('$id');
+        dd('$datasiswa');
+        return view('master.datasiswa.edit_siswa');
     }
 
     /**
