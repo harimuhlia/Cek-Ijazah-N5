@@ -36,49 +36,50 @@
       </ul>
   </div>
 @endif
-<form action="{{ route('datasiswa.store')}}" enctype="multipart/form-data" method="POST">
+<form action="{{ route('datasiswa.update', $datasiswa->id)}}" enctype="multipart/form-data" method="POST">
   @csrf
+  @method('put')
 <form>
   <div class="card-body">
     <div class="form-group">
       <label for="namalengkap">Nama Lengkap</label>
-      <input type="text" class="form-control" name="namalengkap" placeholder="Masukan Nama Lengkap">
+      <input type="text" class="form-control" name="namalengkap" placeholder="Masukan Nama Lengkap" value="{{ $datasiswa->namalengkap }}">
       </div>
       <div class="form-group">
       <label for="NISN">NISN</label>
-      <input type="text" class="form-control" name="NISN" placeholder="Silakan Masukan NISN">
+      <input type="text" class="form-control" name="NISN" placeholder="Silakan Masukan NISN" value="{{ $datasiswa->NISN }}">
       </div>
       <div class="form-group">
         <label for="jurusan">Jurusan</label>
-        <input type="text" class="form-control" name="jurusan" placeholder="Masukan Jurusan">
+        <input type="text" class="form-control" name="jurusan" placeholder="Masukan Jurusan" value="{{ $datasiswa->jurusan }}">
         </div>
       <div class="form-group">
         <label for="tempatlahir">Tempat Lahir</label>
-        <input type="text" class="form-control" name="tempatlahir" placeholder="Masukan Tempat Lahir">
+        <input type="text" class="form-control" name="tempatlahir" placeholder="Masukan Tempat Lahir" value="{{ $datasiswa->tempatlahir }}">
         </div>
         <div class="form-group">
           <label for="tanggal_lahir">Tanggal Lahir</label>
-          <input type="date" class="form-control" name="tanggal_lahir" placeholder="Pilih Tanggal">
+          <input type="date" class="form-control" name="tanggal_lahir" placeholder="Pilih Tanggal" value="{{ $datasiswa->tanggal_lahir }}">
           </div>
   <div class="form-group">
   <label for="wali">Nama Wali</label>
-  <input type="text" class="form-control" name="wali" placeholder="Masukan Nama Wali">
+  <input type="text" class="form-control" name="wali" placeholder="Masukan Nama Wali" value="{{ $datasiswa->wali }}">
   </div>
   <div class="form-group">
   <label for="thn_masuk">Tahun Masuk</label>
-  <input type="date" class="form-control" name="thn_masuk" placeholder="Masukan Tahun Masuk">
+  <input type="date" class="form-control" name="thn_masuk" placeholder="Masukan Tahun Masuk" value="{{ $datasiswa->thn_masuk }}">
   </div>
   <div class="form-group">
     <label for="thn_lulus">Tahun Lulus</label>
-    <input type="date" class="form-control" name="thn_lulus" placeholder="Masukan Tahun Lulus">
+    <input type="date" class="form-control" name="thn_lulus" placeholder="Masukan Tahun Lulus" value="{{ $datasiswa->thn_lulus }}">
     </div>
   <div class="form-group">
     <label for="no_ijazah">Nomor Ijazah</label>
-    <input type="text" class="form-control" name="no_ijazah" placeholder="Masukan Nomor Ijazah">
+    <input type="text" class="form-control" name="no_ijazah" placeholder="Masukan Nomor Ijazah" value="{{ $datasiswa->no_ijazah }}">
     </div>
     <div class="form-group">
       <label for="asalsekolah">Asal Sekolah</label>
-      <input type="text" class="form-control" name="asalsekolah" placeholder="Masukan Asal Sekolah">
+      <input type="text" class="form-control" name="asalsekolah" placeholder="Masukan Asal Sekolah" value="{{ $datasiswa->asalsekolah }}">
       </div>
   <div class="card-footer">
   <button type="submit" class="btn btn-primary">Submit</button>

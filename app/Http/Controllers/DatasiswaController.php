@@ -67,9 +67,9 @@ class DatasiswaController extends Controller
      */
     public function edit($id)
     {
-        $datasiswa = Siswa::find('$id');
-        dd('$datasiswa');
-        return view('master.datasiswa.edit_siswa');
+        $datasiswa = Siswa::find($id);
+        // dd($datasiswa);
+        return view('master.datasiswa.edit_siswa', compact('datasiswa'));
     }
 
     /**
@@ -81,7 +81,15 @@ class DatasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'namalengkap' => 'required',
+            'NISN' => 'required',
+            'jurusan' => 'required',
+        ]);
+
+        Siswa::find($id)->update($request->all());
+
+        return redirect()->route('datasiswa.index');
     }
 
     /**
@@ -92,6 +100,8 @@ class DatasiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Siswa::find($id)->delete();
+
+        return redirect()->back();
     }
 }

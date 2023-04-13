@@ -48,12 +48,12 @@
             	<h4>FORMULIR VERIFIKASI IJAZAH</h4>           
           <div class="card">
               <div class="card-body">
-                  <form action="" method="get">
+                  <form action="/searchdata" method="get">
                       @csrf
                       <input type="hidden" name="search" value="search">
                       <div class="form-group">
                           <label for="">Jurusan</label>
-                          <select name="jurusan" id="" class="form-control">
+                          <select name="jurusan" id="" class="form-control" required>
                               <option value="">Pilih Jurusan</option>
                               <option value="Tata Boga">Tata Boga</option>
                               <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
@@ -62,11 +62,11 @@
                       </div>
                       <div class="form-group">
                           <label for="">NISN</label>
-                          <input type="number" name="NISN" id="" class="form-control">
+                          <input type="number" name="NISN" id="" class="form-control" required>
                       </div>
                       <div class="form-group">
                           <label for="">Nomor Ijazah</label>
-                          <input type="text" name="no_ijazah" id="" class="form-control">
+                          <input type="text" name="no_ijazah" required id="" class="form-control">
                       </div>
                       <div class="form-group">
                           <button class="btn btn-primary">Cari Data</button>

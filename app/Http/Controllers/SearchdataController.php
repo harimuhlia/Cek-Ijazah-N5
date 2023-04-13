@@ -20,10 +20,12 @@ class SearchdataController extends Controller
                 'NISN'  => 'required',
                 'no_ijazah' => 'required'
             ]);
+            // dd('halo');
             $searchsiswa = Siswa::where('jurusan',  'like', "%" . $request->jurusan . "%")->where('NISN',  'like', "%" . $request->NISN . "%")->where('no_ijazah',  'like', "%" . $request->no_ijazah . "%")->get();
-            dd($request);
+            // dd($request);
             return view('search_data', compact('searchsiswa'));
         } else {
+            // dd('halo');
             return view('search_data');
         }
     }

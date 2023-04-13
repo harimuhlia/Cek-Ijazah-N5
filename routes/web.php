@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('search_data');
 });
 
-Route::resource('/searchdata', SearchdataController::class);
+// Route::resource('/searchdata', SearchdataController::class);
+Route::get('/searchdata', [SearchdataController::class, 'index']);
 Route::resource('/datasiswa', DatasiswaController::class,);
 Route::resource('/dataijazah', IjazahController::class);
