@@ -75,8 +75,8 @@
               </div>
           </div>
   
-          @isset($search)
-          @if (empty($search))
+          @isset($searchsiswa)
+          @if (empty($searchsiswa))
               <h1>Data yang anda masukan tidak valid</h1>
           @else
           <div class="card">
@@ -120,6 +120,7 @@
           </div>
           @endif 
         @endisset
+
 			</div>  
         </div>
         <!-- LAYER OVER THE SLIDER TO MAKE THE WHITE TEXTE READABLE -->
@@ -149,8 +150,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
+	  <script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/soon/plugins.js"></script>
     <script src="assets/js/soon/jquery.themepunch.revolution.min.js"></script>

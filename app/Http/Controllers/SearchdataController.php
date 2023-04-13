@@ -15,6 +15,11 @@ class SearchdataController extends Controller
     public function index(Request $request)
     {
         if ($request->search) {
+            $request->validate([
+                'jurusan' => 'required',
+                'NISN'  => 'required',
+                'no_ijazah' => 'required'
+            ]);
             $searchsiswa = Siswa::where('jurusan',  'like', "%" . $request->jurusan . "%")->where('NISN',  'like', "%" . $request->NISN . "%")->where('no_ijazah',  'like', "%" . $request->no_ijazah . "%")->get();
 
             return view('search_data', compact('searchsiswa'));
