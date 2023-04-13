@@ -50,7 +50,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach ($siswa as $item)
+                  @foreach ($datasiswa as $item)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->namalengkap }}</td>

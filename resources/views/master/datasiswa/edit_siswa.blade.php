@@ -36,49 +36,49 @@
         </ul>
     </div>
   @endif
-  <form action="/datasiswa/update" method="POST" enctype="multipart/form-data">
+  <form action="/datasiswa/{{ $id }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="card-body">
       <div class="form-group">
         <label for="namalengkap">Nama Lengkap</label>
-        <input type="text" class="form-control @error('title') is-invalid @enderror" name="namalengkap" value="{{$siswa->namalengkap}}" placeholder="Masukkan Judul Post">
+        <input type="text" class="form-control @error('title') is-invalid @enderror" name="namalengkap" value="{{ $datasiswa->namalengkap }}" placeholder="Masukkan Judul Post">
         </div>
         <div class="form-group">
         <label for="NISN">NISN</label>
-        <input type="text" class="form-control" name="NISN" value="{{ old('NISN',$siswa->NISN) }}">
+        <input type="text" class="form-control" name="NISN" value="{{ $datasiswa->NISN }}">
         </div>
         <div class="form-group">
           <label for="jurusan">Jurusan</label>
-          <input type="text" class="form-control" name="jurusan" value="{{ old('jurusan',$siswa->jurusan) }}">
+          <input type="text" class="form-control" name="jurusan" value="">
           </div>
         <div class="form-group">
           <label for="tempatlahir">Tempat Lahir</label>
-          <input type="text" class="form-control" name="tempatlahir" value="{{ old('tempatlahir',$siswa->tempatlahir) }}">
+          <input type="text" class="form-control" name="tempatlahir" value="">
           </div>
           <div class="form-group">
             <label for="tanggal_lahir">Tanggal Lahir</label>
-            <input type="date" class="form-control" name="tanggal_lahir" value="{{ old('tanggal_lahir',$siswa->tanggal_lahir) }}">
+            <input type="date" class="form-control" name="tanggal_lahir" value="">
             </div>
     <div class="form-group">
     <label for="wali">Nama Wali</label>
-    <input type="text" class="form-control" name="wali" value="{{ old('wali',$siswa->wali) }}">
+    <input type="text" class="form-control" name="wali" value="">
     </div>
     <div class="form-group">
     <label for="thn_masuk">Tahun Masuk</label>
-    <input type="date" class="form-control" name="thn_masuk" value="{{ old('thn_masuk',$siswa->thn_masuk) }}">
+    <input type="date" class="form-control" name="thn_masuk" value="">
     </div>
     <div class="form-group">
       <label for="thn_lulus">Tahun Lulus</label>
-      <input type="date" class="form-control" name="thn_lulus" value="{{ old('thn_lulus',$siswa->thn_lulus) }}">
+      <input type="date" class="form-control" name="thn_lulus" value="">
       </div>
     <div class="form-group">
       <label for="no_ijazah">Nomor Ijazah</label>
-      <input type="text" class="form-control" name="no_ijazah" value="{{ old('no_ijazah',$siswa->no_ijazah) }}">
+      <input type="text" class="form-control" name="no_ijazah" value="">
       </div>
       <div class="form-group">
         <label for="asalsekolah">Asal Sekolah</label>
-        <input type="text" class="form-control" name="asalsekolah" value="{{ old('asalsekolah',$siswa->asalsekolah) }}">
+        <input type="text" class="form-control" name="asalsekolah" value="">
         </div>
     <div class="card-footer">
     <button type="submit" class="btn btn-primary">Submit</button>

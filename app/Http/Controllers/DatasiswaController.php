@@ -5,27 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
-class SearchdataController extends Controller
+class DatasiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->search) {
-            $request->validate([
-                'jurusan' => 'required',
-                'NISN'  => 'required',
-                'no_ijazah' => 'required'
-            ]);
-            $searchsiswa = Siswa::where('jurusan',  'like', "%" . $request->jurusan . "%")->where('NISN',  'like', "%" . $request->NISN . "%")->where('no_ijazah',  'like', "%" . $request->no_ijazah . "%")->get();
-            dd($request);
-            return view('search_data', compact('searchsiswa'));
-        } else {
-            return view('search_data');
-        }
+        $datasiswa = Siswa::all();
+        return view('master.datasiswa.index_siswa', compact('datasiswa'));
     }
 
     /**
@@ -35,7 +25,7 @@ class SearchdataController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.datasiswa.tambah_siswa');
     }
 
     /**
@@ -46,7 +36,16 @@ class SearchdataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'namalengkap' => 'required',
+            'NISN' => 'required',
+            'jurusan' => 'required',
+        ]);
+
+        Siswa::create($request->all());
+
+        return redirect()->route('datasiswa.index')
+            ->with('success', 'Student created successfully.');
     }
 
     /**
