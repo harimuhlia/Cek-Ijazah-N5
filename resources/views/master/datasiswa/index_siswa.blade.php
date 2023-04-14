@@ -49,7 +49,7 @@
                   <th>Edit</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                   @foreach ($datasiswa as $item)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -62,11 +62,10 @@
                     <td>
                       <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                       <a href="{{ route('datasiswa.edit',$item->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a>
-                      {{-- <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</a> --}}
                       <form action="{{ route('datasiswa.destroy', $item->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
+                        <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete the record {{ $item->namalengkap }} ?')"><i class="fas fa-trash-alt"></i></button>
                       </form>
                     </td>
                   </tr>
