@@ -38,8 +38,9 @@ class DatasiswaController extends Controller
     {
         $request->validate([
             'namalengkap' => 'required',
-            'NISN' => 'required',
+            'NISN' => 'required|min:6|unique:siswas',
             'jurusan' => 'required',
+            'no_ijazah' => 'unique:siswas|min:5',
         ]);
 
         Siswa::create($request->all());
@@ -83,13 +84,15 @@ class DatasiswaController extends Controller
     {
         $request->validate([
             'namalengkap' => 'required',
-            'NISN' => 'required',
+            'NISN' => 'required|min:6|unique:siswas,NISN,' . $id,
             'jurusan' => 'required',
+            'no_ijazah' => 'required|min:6|unique:siswas,no_ijazah,' . $id,
         ]);
 
         Siswa::find($id)->update($request->all());
 
-        return redirect()->route('datasiswa.index');
+        return redirect()->route('datasiswa.index')
+            ->with('success', 'Student Updated successfully.');
     }
 
     /**
@@ -102,6 +105,7 @@ class DatasiswaController extends Controller
     {
         Siswa::find($id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()
+            ->with('success', 'Student Deleted successfully.');
     }
 }

@@ -60,13 +60,13 @@
                     <td>{{ $item->wali }}</td>
                     <td>{{ $item->no_ijazah }}</td>
                     <td>
-                      <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> Detail</a>
-                      <a href="{{ route('datasiswa.edit',$item->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                      <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                      <a href="{{ route('datasiswa.edit',$item->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a>
                       {{-- <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Hapus</a> --}}
                       <form action="{{ route('datasiswa.destroy', $item->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
                       </form>
                     </td>
                   </tr>
