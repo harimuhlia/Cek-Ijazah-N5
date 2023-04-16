@@ -26,8 +26,8 @@ class DatasiswaController extends Controller
      */
     public function create()
     {
-        $jurusan = Jurusan::all();
-        return view('master.datasiswa.tambah_siswa', compact('jurusan'));
+        $datasiswa = Siswa::all();
+        return view('master.datasiswa.tambah_siswa', compact('datasiswa'));
     }
 
     /**

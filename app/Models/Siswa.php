@@ -12,12 +12,12 @@ class Siswa extends Model
     protected $table = "siswas";
     protected $primaryKey = "id";
     protected $fillable = [
-        'id', 'namalengkap', 'NISN', 'jurusan', 'tempatlahir', 'tanggal_lahir', 'wali', 'thn_masuk', 'thn_lulus', 'no_ijazah', 'asalsekolah'
+        'id', 'namalengkap', 'NISN', 'jurusan', 'nama_jurusan', 'tempatlahir', 'tanggal_lahir', 'wali', 'thn_masuk', 'thn_lulus', 'no_ijazah', 'asalsekolah'
     ];
 
     public function jurusan()
     {
-        return $this->belongsTo(Jurusan::class);
+        return $this->belongsTo(Jurusan::class, 'jurusan', 'nama_jurusan');
     }
 
 }
