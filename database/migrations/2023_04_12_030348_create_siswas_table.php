@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('no_ijazah')->nullable();
             $table->string('asalsekolah')->nullable();
             $table->timestamps();
+            
         });
     }
 

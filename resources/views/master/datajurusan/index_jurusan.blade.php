@@ -1,6 +1,6 @@
 @extends('tampilan.apputama')
-@section('title', 'Data Ijazah Lengkap')
-
+@section('title', 'Data Jurusan')
+    
 @section('content')
 <section class="content">
   @if ($message = Session::get('success'))
@@ -13,10 +13,10 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Tabel Seluruh Data Siswa</h3>
+              <h3 class="card-title">Tabel Seluruh Data Jurusan</h3>
               <div class="card-tools">
                 <a href="" class="btn btn-success btn-sm"><i class="fas fa-upload" title="Tambah Data"></i> Import</a>
-                <a href="{{ route('datasiswa.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus" title="Tambah Data"></i> Tambah</a>
+                <a href="{{ route('datajurusan.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus" title="Tambah Data"></i> Tambah</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -25,34 +25,26 @@
                 <thead>
                 <tr>
                   <th>#</th>
-                  <th>Nama Lengkap</th>
-                  <th>NISN</th>
-                  <th>Jurusan(s)</th>
-                  <th>TTL</th>
-                  <th>Nama Wali</th>
-                  <th>No. Ijazah</th>
+                  <th>Kode Jurusan</th>
+                  <th>Nama Jurusan</th>
                   <th>Edit</th>
                 </tr>
                 </thead>
                 <tbody> 
-                  @foreach ($datasiswa as $item)
+                  @foreach ($datajurusan as $item)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->namalengkap }}</td>
-                    <td>{{ $item->NISN }}</td>
-                    <td>{{ $item->jurusan }}</td>
-                    <td>{{ $item->tempatlahir }}, {{ $item->tanggal_lahir }}</td>
-                    <td>{{ $item->wali }}</td>
-                    <td>{{ $item->no_ijazah }}</td>
+                    <td>{{ $item->kode_jurusan }}</td>
+                    <td>{{ $item->nama_jurusan }}</td>
                     <td>
                       {{-- <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                       <a href="{{ route('datasiswa.edit',$item->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> --}}
-                      <form action="{{ route('datasiswa.destroy', $item->id) }}" method="post">
+                      <form action="{{ route('datajurusan.destroy', $item->id) }}" method="post">
                         @csrf
                         @method('delete')
                         <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
-                      <a href="{{ route('datasiswa.edit',$item->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete the record {{ $item->namalengkap }} ?')"><i class="fas fa-trash-alt"></i></button>
+                      <a href="{{ route('datajurusan.edit',$item->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete the record {{ $item->nama_jurusan }} ?')"><i class="fas fa-trash-alt"></i></button>
                       </form>
                     </td>
                   </tr>
@@ -61,12 +53,8 @@
                 <tfoot>
                 <tr>
                     <th>#</th>
-                    <th>Nama Lengkap</th>
-                    <th>NISN</th>
-                    <th>Jurusan(s)</th>
-                    <th>TTL</th>
-                    <th>Nama Wali</th>
-                    <th>No. Ijazah</th>
+                    <th>Kode Jurusan</th>
+                    <th>Nama Jurusan</th>
                     <th>Edit</th>
                 </tr>
                 </tfoot>

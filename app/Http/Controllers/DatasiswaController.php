@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jurusan;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class DatasiswaController extends Controller
      */
     public function index()
     {
-        $datasiswa = Siswa::all();
+        $datasiswa = Siswa::all('jurusan');
         return view('master.datasiswa.index_siswa', compact('datasiswa'));
     }
 
@@ -25,7 +26,8 @@ class DatasiswaController extends Controller
      */
     public function create()
     {
-        return view('master.datasiswa.tambah_siswa');
+        $jurusan = Jurusan::all();
+        return view('master.datasiswa.tambah_siswa', compact('jurusan'));
     }
 
     /**
@@ -40,10 +42,21 @@ class DatasiswaController extends Controller
             'namalengkap' => 'required',
             'NISN' => 'required|min:6|unique:siswas',
             'jurusan' => 'required',
-            'no_ijazah' => 'unique:siswas|min:5',
+            'no_ijazah' => 'unique:siswas',
         ]);
 
-        Siswa::create($request->all());
+        Siswa::create([
+            'namalengkap' => $request->namalengkap,
+            'NISN' => $request->NISN,
+            'jurusan' => $request->jurusan,
+            'tempatlahir' => $request->tempatlahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'wali' => $request->wali,
+            'thn_masuk' => $request->thn_masuk,
+            'thn_lulus' => $request->thn_lulus,
+            'no_ijazah' => $request->no_ijazah,
+            'asalsekolah' => $request->asalsekolah,
+        ]);
 
         return redirect()->route('datasiswa.index')
             ->with('success', 'Student created successfully.');
