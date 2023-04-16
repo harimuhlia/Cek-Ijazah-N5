@@ -35,8 +35,12 @@
       <input type="text" class="form-control" name="NISN" placeholder="Silakan Masukan NISN" value="{{ $datasiswa->NISN }}">
       </div>
       <div class="form-group">
-        <label for="jurusan">Jurusan</label>
-        <input type="text" class="form-control" name="jurusan" placeholder="Masukan Jurusan" value="{{ $datasiswa->jurusan }}">
+        <label>Nama Jurusan</label>
+        <select class="form-control" name="jurusan">
+          @foreach ($jurusan as $item)
+            <option value="{{ $item->id }}" {{ $item->id == $datasiswa->jurusan ? "selected" : ""}}>{{ $item->nama_jurusan }}</option>
+          @endforeach
+        </select>
         </div>
       <div class="form-group">
         <label for="tempatlahir">Tempat Lahir</label>

@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/dashboard', DashboardController::class,);
+Route::get('/', [SearchdataController::class, 'index']);
 Route::get('/searchdata', [SearchdataController::class, 'index']);
 Route::resource('datajurusan', DatajurusanController::class);
 Route::resource('/datasiswa', DatasiswaController::class,);

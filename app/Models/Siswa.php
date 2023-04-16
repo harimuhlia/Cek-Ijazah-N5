@@ -15,9 +15,9 @@ class Siswa extends Model
         'id', 'namalengkap', 'NISN', 'jurusan', 'nama_jurusan', 'tempatlahir', 'tanggal_lahir', 'wali', 'thn_masuk', 'thn_lulus', 'no_ijazah', 'asalsekolah'
     ];
 
-    public function jurusan()
+    public function jrsn()
     {
-        return $this->belongsTo(Jurusan::class, 'jurusan', 'nama_jurusan');
+        return $this->belongsTo(Jurusan::class, 'jurusan', 'id');
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jurusan;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
@@ -22,13 +23,34 @@ class SearchdataController extends Controller
             ]);
             // dd('halo');
             $searchsiswa = Siswa::where('jurusan',  'like', "%" . $request->jurusan . "%")->where('NISN',  'like', "%" . $request->NISN . "%")->where('no_ijazah',  'like', "%" . $request->no_ijazah . "%")->get();
-            // dd($request);
-            return view('search_data', compact('searchsiswa'));
+        $jurusan = Jurusan::all();
+            //dd($request);
+            return view('search_data', compact('searchsiswa','jurusan'));
         } else {
             // dd('halo');
-            return view('search_data');
+        $jurusan = Jurusan::all();
+            return view('search_data', compact('jurusan'));
         }
     }
+    // public function index(Request $request)
+    // {
+    //     $jurusan = Jurusan::all();
+    //     return view('search_data', compact('searchsiswa', 'jurusan'));
+    //     if ($request->search) {
+    //         $request->validate([
+    //             'jurusan' => 'required',
+    //             'NISN'  => 'required',
+    //             'no_ijazah' => 'required'
+    //         ]);
+    //         // dd('halo');
+    //         $searchsiswa = Siswa::where('jurusan',  'like', "%" . $request->jurusan . "%")->where('NISN',  'like', "%" . $request->NISN . "%")->where('no_ijazah',  'like', "%" . $request->no_ijazah . "%")->get();
+    //         //dd($request);
+    //         return view('search_data', compact('searchsiswa', 'jurusan'));
+    //     } else {
+    //         // dd('halo');
+    //         return view('search_data');
+    //     }
+    // }
 
     /**
      * Show the form for creating a new resource.

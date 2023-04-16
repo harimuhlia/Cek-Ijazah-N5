@@ -15,7 +15,7 @@ class DatasiswaController extends Controller
      */
     public function index()
     {
-        $datasiswa = Siswa::all('jurusan');
+        $datasiswa = Siswa::all();
         return view('master.datasiswa.index_siswa', compact('datasiswa'));
     }
 
@@ -26,8 +26,8 @@ class DatasiswaController extends Controller
      */
     public function create()
     {
-        $datasiswa = Siswa::all();
-        return view('master.datasiswa.tambah_siswa', compact('datasiswa'));
+        $jurusan = Jurusan::all();
+        return view('master.datasiswa.tambah_siswa', compact('jurusan'));
     }
 
     /**
@@ -81,9 +81,10 @@ class DatasiswaController extends Controller
      */
     public function edit($id)
     {
+        $jurusan = Jurusan::all();
         $datasiswa = Siswa::find($id);
         // dd($datasiswa);
-        return view('master.datasiswa.edit_siswa', compact('datasiswa'));
+        return view('master.datasiswa.edit_siswa', compact('datasiswa', 'jurusan'));
     }
 
     /**

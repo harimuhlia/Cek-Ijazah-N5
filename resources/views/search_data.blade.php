@@ -52,14 +52,14 @@
                       @csrf
                       <input type="hidden" name="search" value="search">
                       <div class="form-group">
-                          <label for="">Jurusan</label>
-                          <select name="jurusan" id="" class="form-control" required>
-                              <option value="">Pilih Jurusan</option>
-                              <option value="Tata Boga">Tata Boga</option>
-                              <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                              <option value="Multimedia">Multimedia</option>
-                          </select>
-                      </div>
+                        <label>Nama Jurusan</label>
+                        <select class="form-control" name="jurusan">
+                            <option value="">-- Pilih Jurusan --</option>
+                          @foreach ($jurusan as $item)
+                            <option value="{{ $item->id }}">{{ $item->nama_jurusan }}</option>
+                          @endforeach
+                        </select>
+                        </div>
                       <div class="form-group">
                           <label for="">NISN</label>
                           <input type="number" name="NISN" id="" class="form-control" required>
@@ -69,7 +69,7 @@
                           <input type="text" name="no_ijazah" required id="" class="form-control">
                       </div>
                       <div class="form-group">
-                          <button class="btn btn-primary">Cari Data</button>
+                          <button class="btn btn-primary">Verifikasi Data</button>
                       </div>
                   </form>
               </div>
@@ -103,7 +103,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->namalengkap }}</td>
                                 <td>{{ $item->NISN }}</td>
-                                <td>{{ $item->jurusan }}</td>
+                                <td>{{ $item->jrsn->nama_jurusan }}</td>
                                 <td>{{ $item->tempatlahir }}, {{ $item->tanggal_lahir }}</td>
                                 <td>{{ $item->wali }}</td>
                                 <td>{{ $item->no_ijazah }}</td>
@@ -111,7 +111,7 @@
                               </tr>
                           @empty
                               <tr>
-                                  <th>Data Tidak Ada</th>
+                                 <strong>Nama Yang Anda Cari Tidak Ditemukan, Silakan Masukan Data Yang Benar</strong>
                               </tr>
                           @endforelse
                       </tbody>
