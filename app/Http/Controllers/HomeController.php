@@ -51,7 +51,7 @@ class HomeController extends Controller
             "name" => $request->name,
             "email" => $request->email,
             // "password" => bcrypt($request->password),
-            "jbtn_pelatih" => $request->ekskul,
+            "jabatan" => $request->jabatan,
             "alamat" => $request->alamat
         ]);
         if($request->hasFile('foto_profil'))
@@ -75,7 +75,7 @@ class HomeController extends Controller
                     "email" => $request->email,
                     // "password" => Hash::make($request->password),
                     "foto_profil" => $filename,
-                    "jbtn_pelatih" => $request->ekskul,
+                    "jabatan" => $request->jabatan,
                     "alamat" => $request->alamat
                 ]);
             } else {
@@ -86,14 +86,14 @@ class HomeController extends Controller
                     "email" => $request->email,
                     // "password" => $request->password,
                     "foto_profil" => $filename,
-                    "jbtn_pelatih" => $request->ekskul,
+                    "jabatan" => $request->jabatan,
                     "alamat" => $request->alamat
                 ]);
 
             }
         }
-
-        return redirect(route("user.profile", $user->id))->with(["success" => "User berhasil diupdate!"]);
+        
+        return redirect(route("profil", $user->id))->with(["success" => "User berhasil diupdate!"]);
     }
     
 }

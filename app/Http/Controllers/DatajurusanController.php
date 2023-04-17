@@ -37,8 +37,8 @@ class DatajurusanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_jurusan' => 'required',
-            'kode_jurusan' => 'required|min:2',
+            'nama_jurusan' => 'required|min:6|unique:jurusans',
+            'kode_jurusan' => 'required|min:2|unique:jurusans',
         ]);
 
         Jurusan::create($request->all());
@@ -81,8 +81,8 @@ class DatajurusanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_jurusan' => 'required',
-            'nama_jurusan' => 'required',
+            'kode_jurusan' => 'required|min:2|unique:jurusans,kode_jurusan,' . $id,
+            'nama_jurusan' => 'required|min:6|unique:jurusans,nama_jurusan,' . $id,
         ]);
 
         Jurusan::find($id)->update($request->all());

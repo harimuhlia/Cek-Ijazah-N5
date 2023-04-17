@@ -32,13 +32,13 @@
                     <div class="form-group row">
                       <label for="Role" class="col-sm-3 col-form-label">Role User</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('ekskul') is-invalid @enderror" id="ekskul" name="role" value="{{ Auth::user()->role }}" disabled>
+                        <input type="text" class="form-control @error('ekskul') is-invalid @enderror" id="role" name="role" value="{{ Auth::user()->role }}" disabled>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="Ekskul" class="col-sm-3 col-form-label">Jabatan</label>
+                      <label for="jabatan" class="col-sm-3 col-form-label">Jabatan</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control @error('ekskul') is-invalid @enderror" id="ekskul" name="jabatan" value="{{ $user->jabatan }}">
+                        <input type="text" class="form-control @error('jabatan') is-invalid @enderror" id="jabatan" name="jabatan" value="{{ $user->jabatan }}">
                       </div>
                     </div>
                     <div class="form-group row">

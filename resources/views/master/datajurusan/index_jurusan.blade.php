@@ -3,11 +3,6 @@
     
 @section('content')
 <section class="content">
-  @if ($message = Session::get('success'))
-  <div class="alert alert-success">
-      <p>{{ $message }}</p>
-  </div>
-  @endif
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -72,6 +67,7 @@
     </div>
     <!-- /.container-fluid -->
   </section>
+  @include('sweetalert::alert')
 @endsection
 
 @section('javascript')

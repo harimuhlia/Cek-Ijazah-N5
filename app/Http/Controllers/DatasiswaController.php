@@ -42,7 +42,6 @@ class DatasiswaController extends Controller
             'namalengkap' => 'required',
             'NISN' => 'required|min:6|unique:siswas',
             'jurusan' => 'required',
-            'no_ijazah' => 'unique:siswas',
         ]);
 
         Siswa::create([
@@ -57,7 +56,7 @@ class DatasiswaController extends Controller
             'no_ijazah' => $request->no_ijazah,
             'asalsekolah' => $request->asalsekolah,
         ]);
-
+    
         return redirect()->route('datasiswa.index')
             ->with('success', 'Student created successfully.');
     }
@@ -100,7 +99,7 @@ class DatasiswaController extends Controller
             'namalengkap' => 'required',
             'NISN' => 'required|min:6|unique:siswas,NISN,' . $id,
             'jurusan' => 'required',
-            'no_ijazah' => 'required|min:6|unique:siswas,no_ijazah,' . $id,
+            'no_ijazah' => 'unique:siswas,no_ijazah,' . $id,
         ]);
 
         Siswa::find($id)->update($request->all());
