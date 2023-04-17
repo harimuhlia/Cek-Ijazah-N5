@@ -43,8 +43,10 @@
                         @csrf
                         @method('delete')
                         <a href="#" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
-                      <a href="{{ route('datajurusan.edit',$item->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('datajurusan.edit',$item->id) }}" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a>
+                        @if (Auth()->user()->role == 'Administrator')
                         <button class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete the record {{ $item->nama_jurusan }} ?')"><i class="fas fa-trash-alt"></i></button>
+                        @endif
                       </form>
                     </td>
                   </tr>

@@ -90,7 +90,7 @@
                             <th>#</th>
                             <th>Nama Lengkap</th>
                             <th>NISN</th>
-                            <th>Jurusan(s)</th>
+                            <th>Jurusan</th>
                             <th>TTL</th>
                             <th>Nama Wali</th>
                             <th>No. Ijazah</th>

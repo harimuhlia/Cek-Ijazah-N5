@@ -13,8 +13,8 @@
         <img src="{{ asset('AdminLTE') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
-        <span class="text-success"><i class="fas fa-circle nav-icon"></i> Administrator</span>
+        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+        <span class="text-success"><i class="fas fa-circle nav-icon"></i> {{ Auth::user()->role }}</span>
       </div>
     </div>
 
@@ -83,7 +83,8 @@
         </li>
         <li class="nav-header">PENGATURAN</li>
         <li class="nav-item">
-          <a href="pages/calendar.html" class="nav-link">
+        @if (Auth()->user()->role == 'Administrator')
+          <a href="{{ route('usermanage.index')}}" class="nav-link {{ (request()->is('usermanage.index*')) ? 'active' : '' }}" class="nav-link">
             <i class="nav-icon fas fa-user-friends"></i>
             <p>
               Data Pengguna
@@ -91,6 +92,7 @@
             </p>
           </a>
         </li>
+        @endif
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon far fa-id-card"></i>
@@ -101,26 +103,24 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="pages/mailbox/mailbox.html" class="nav-link">
+              <a href="{{ route('profil') }}" class="nav-link {{ (request()->is('profil*')) ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Profil</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/mailbox/compose.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Edit Pengguna</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/mailbox/read-mail.html" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Edit Aplikasi</p>
               </a>
             </li>
           </ul>
         </li>
-        <button type="button" class="btn btn-block btn-danger btn-sm"><i class="fas fa-sign-out-alt"></i> KELUAR</button>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();" class="nav-link">
+          <button type="button" class="btn btn-block btn-danger btn-sm" id="logout-form"><i class="fas fa-sign-out-alt"></i> KELUAR</button>
+          {{ csrf_field() }}
+          </form>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

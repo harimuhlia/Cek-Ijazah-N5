@@ -3,9 +3,12 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DatajurusanController;
 use App\Http\Controllers\DatasiswaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IjazahController;
+use App\Http\Controllers\ManageuserController;
 use App\Http\Controllers\SearchdataController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +21,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('search_data');
-});
+// Route::get('/', function () {
+//     return view('search_data');
+// });
 
-Route::resource('/dashboard', DashboardController::class,);
 Route::get('/', [SearchdataController::class, 'index']);
 Route::get('/searchdata', [SearchdataController::class, 'index']);
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth', 'ceklevel:Administrator,Pendidik,Tendik'])->group(function () {
+// ---------------Manage Profil-------------------//
+Route::get('/profil', [HomeController::class, 'userProfile'])->name('profil');
+Route::get('/user/profile/edit/{id}',[HomeController::class, 'editUserProfile'])->name('user.profile.edit');
+Route::put('/user/profile/update/{id}',[HomeController::class, 'updateUserProfile'])->name('user.profile.update');
+
+Route::resource('/dashboard', DashboardController::class,);
 Route::resource('datajurusan', DatajurusanController::class);
 Route::resource('/datasiswa', DatasiswaController::class,);
 Route::resource('/dataijazah', IjazahController::class);
+
+// ---------------Manage User-------------------//
+Route::get('/manageuser', [ManageuserController::class, 'index'])->name('usermanage.index');
+Route::get('/manageuser/create', [ManageuserController::class, 'create'])->name('usermanage.create');
+Route::post('/manageuser/store', [ManageuserController::class, 'store'])->name('usermanage.store');
+Route::get('/manageuser/edit/{id}', [ManageuserController::class, 'edit'])->name('usermanageEdit');
+Route::put('/manageuser/update/{id}', [ManageuserController::class, 'update'])->name('usermanage.update');
+Route::get('/manageuser/delete/{id}', [ManageuserController::class, 'destroy'])->name('usermanage.destroy');
+});
