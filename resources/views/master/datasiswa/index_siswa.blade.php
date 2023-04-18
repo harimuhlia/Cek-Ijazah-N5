@@ -10,7 +10,33 @@
             <div class="card-header">
               <h3 class="card-title">Tabel Seluruh Data Siswa</h3>
               <div class="card-tools">
-                <a href="" class="btn btn-success btn-sm"><i class="fas fa-upload" title="Tambah Data"></i> Import</a>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_tambah"><i class="fas fa-upload"></i> Import</button>
+<!-- Modal -->
+<div class="modal fade" id="modal_tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <form action="/importexcel" method="POST" enctype="multipart/form-data">
+    @csrf
+      <div class="modal-body">
+        <div class="form-gorup">
+          <input type="file" name="file">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
                 <a href="{{ route('datasiswa.create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus" title="Tambah Data"></i> Tambah</a>
               </div>
             </div>

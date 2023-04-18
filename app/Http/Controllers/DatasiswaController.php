@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Jurusan;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use App\Imports\DatasiswaImport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Session\Session;
 
 class DatasiswaController extends Controller
 {
@@ -121,4 +125,28 @@ class DatasiswaController extends Controller
         return redirect()->back()
             ->with('success', 'Student Deleted successfully.');
     }
+
+    public function importexcel(Request $request) 
+	{
+		// validasi
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+ 
+		// menangkap file excel
+		$file = $request->file('file');
+ 
+		// membuat nama file unik
+		$nama_file = rand().$file->getClientOriginalName();
+ 
+		// upload ke folder file_siswa di dalam folder public
+		$file->move('data_siswa',$nama_file);
+ 
+		// import data
+		Excel::import(new DatasiswaImport, public_path('/data_siswa/'.$nama_file));
+
+        return redirect()->back()
+            ->with('success', 'Student Deleted successfully.');
+ 
+	}
 }

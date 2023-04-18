@@ -49,4 +49,7 @@ Route::post('/manageuser/store', [ManageuserController::class, 'store'])->name('
 Route::get('/manageuser/edit/{id}', [ManageuserController::class, 'edit'])->name('usermanageEdit');
 Route::put('/manageuser/update/{id}', [ManageuserController::class, 'update'])->name('usermanage.update');
 Route::get('/manageuser/delete/{id}', [ManageuserController::class, 'destroy'])->name('usermanage.destroy');
+
+// ------------------- Import Export--------------------//
+Route::post('/importexcel', [DatasiswaController::class, 'importexcel'])->name('importexcel');
 });
