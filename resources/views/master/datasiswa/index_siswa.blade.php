@@ -22,7 +22,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <form action="/importexcel" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('importexcel') }}" method="POST" enctype="multipart/form-data">
     @csrf
       <div class="modal-body">
         <div class="form-gorup">

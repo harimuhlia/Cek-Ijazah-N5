@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Imports\DatasiswaImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Imports\SiswaImport;
 use Illuminate\Contracts\Session\Session;
 
 class DatasiswaController extends Controller
@@ -143,7 +144,8 @@ class DatasiswaController extends Controller
 		$file->move('data_siswa',$nama_file);
  
 		// import data
-		Excel::import(new DatasiswaImport, public_path('/data_siswa/'.$nama_file));
+        // Excel::import(new DatasiswaImport, $request->file('file'));
+		Excel::import(new SiswaImport, public_path('/data_siswa/'.$nama_file));
 
         return redirect()->back()
             ->with('success', 'Student Deleted successfully.');
