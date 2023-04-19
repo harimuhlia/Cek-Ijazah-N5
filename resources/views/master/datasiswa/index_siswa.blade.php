@@ -61,6 +61,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->namalengkap }}</td>
                     <td>{{ $item->NISN }}</td>
+                    {{-- <td>{{ $item->nama_jurusan }}</td> --}}
                     <td>{{ $item->jrsn->nama_jurusan }}</td>
                     <td>{{ $item->tempatlahir }}, {{ $item->tanggal_lahir }}</td>
                     <td>{{ $item->wali }}</td>

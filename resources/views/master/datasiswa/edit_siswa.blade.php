@@ -38,10 +38,18 @@
         <label>Nama Jurusan</label>
         <select class="form-control" name="jurusan">
           @foreach ($jurusan as $item)
-            <option value="{{ $item->id }}" {{ $item->id == $datasiswa->jurusan ? "selected" : ""}}>{{ $item->nama_jurusan }}</option>
+            <option value="{{ $item->nama_jurusan }}" {{ $item->nama_jurusan == $datasiswa->jurusan ? "selected" : ""}}>{{ $item->nama_jurusan }}</option>
           @endforeach
         </select>
         </div>
+      {{-- <div class="form-group">
+        <label>Nama Jurusan</label>
+        <select class="form-control" name="jurusan">
+          @foreach ($jurusan as $item)
+            <option value="{{ $item->nama_jurusan }}" {{ $item->id == $datasiswa->jurusan ? "selected" : ""}}>{{ $item->nama_jurusan }}</option>
+          @endforeach
+        </select>
+        </div> --}}
       <div class="form-group">
         <label for="tempatlahir">Tempat Lahir</label>
         <input type="text" class="form-control" name="tempatlahir" placeholder="Masukan Tempat Lahir" value="{{ $datasiswa->tempatlahir }}">

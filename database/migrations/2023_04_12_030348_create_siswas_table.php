@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('namalengkap');
             $table->string('NISN')->unique();
             $table->string('jurusan');
+            $table->foreign('jurusan')->references('nama_jurusan')->on('jurusans')->onDelete('cascade')->onUpdate('cascade');
+            // $table->unsignedBigInteger('jurusan');
+            // $table->foreign('jurusan')->references('id')->on('jurusans')->onDelete('cascade')->onUpdate('cascade');
             $table->string('tempatlahir')->nullable();
             $table->string('tanggal_lahir')->nullable();
             $table->string('wali')->nullable();

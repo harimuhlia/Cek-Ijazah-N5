@@ -17,7 +17,7 @@ class Siswa extends Model
 
     public function jrsn()
     {
-        return $this->belongsTo(Jurusan::class, 'jurusan', 'id');
+        return $this->belongsTo(Jurusan::class, 'jurusan', 'nama_jurusan');
     }
 
 }
